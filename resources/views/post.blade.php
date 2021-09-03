@@ -11,7 +11,7 @@
                 @csrf
                 <div class="mb-4">
                     <label for="body" class="sr-only">body</label>
-                    <textarea name="body" id="body" cols="20" rows="6" class="bg-gray-100 w-full p-4 rounded-lg @error('body') border-red-600 @enderror" placeholder="Post something"></textarea>
+                    <textarea name="body" id="body" cols="20" rows="8" class="bg-gray-100 w-full p-4 rounded-lg @error('body') border-red-600 @enderror" placeholder="Post something"></textarea>
                 </div>
 
                     @error('body') <div class="text-red-500 mt-2 text-sm">{{$message}}</div> @enderror
@@ -26,13 +26,19 @@
             @foreach($posts as $post)
 
               <div class="mb-4">
+
                   <a href="" class="font-bold">{{$post->user->name}}</a> <span class="text-grey-300 text-sm">{{$post->created_at->diffForHumans()}}</span>
                   <p class="mb-2">
                   {{$post->body}}
                   </p>
 
+
               </div>
             @endforeach
+            <div class="p-4">
+                {{$posts->links()}}
+            </div>
+
 
             @else
                 <p>No post</p>
