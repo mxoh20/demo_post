@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,10 @@ Route::post('logout',[LogoutController::class ,'store'])->name('logout');
 
 Route::get('register',[RegisterController::class,'index'])->name('registration');
 Route::post('register',[RegisterController::class,'store'])->name('submit_registration');
+
+//likes router
+Route::post('/posts/{post}/likes',[PostLikesController::class,'store'])->name('posts.likes');
+Route::delete('/posts/{post}/likes',[PostLikesController::class,'destroy'])->name('posts.likes');
 
 
 Route::get('posts',[PostController::class,'index'])->name('posts');
