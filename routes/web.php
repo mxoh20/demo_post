@@ -19,23 +19,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('login',[LoginController::class ,'index'])->name('login');
-Route::post('login',[LoginController::class ,'store']);
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('login', [LoginController::class, 'store']);
+Route::post('logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::post('logout',[LogoutController::class ,'store'])->name('logout');
-
-Route::get('register',[RegisterController::class,'index'])->name('registration');
-Route::post('register',[RegisterController::class,'store'])->name('submit_registration');
+Route::get('register', [RegisterController::class, 'index'])->name('registration');
+Route::post('register', [RegisterController::class, 'store'])->name('submit_registration');
 
 //likes router
-Route::post('/posts/{post}/likes',[PostLikesController::class,'store'])->name('posts.likes');
-Route::delete('/posts/{post}/likes',[PostLikesController::class,'destroy'])->name('posts.likes');
+Route::post('/posts/{post}/likes', [PostLikesController::class, 'store'])->name('posts.likes');
+Route::delete('/posts/{post}/likes', [PostLikesController::class, 'destroy'])->name('posts.likes');
 
-
-Route::get('posts',[PostController::class,'index'])->name('posts');
-Route::post('posts',[PostController::class,'store'])->name('posts');
+Route::get('posts', [PostController::class, 'index'])->name('posts');
+Route::post('posts', [PostController::class, 'store'])->name('posts');
+Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Route::get('/', function () {
     return view('index');
