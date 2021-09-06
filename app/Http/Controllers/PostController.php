@@ -13,15 +13,15 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
+//    public function __construct()
+//    {
+//        $this->middleware(['auth']);
+//    }
 
     public function index()
     {
         //
-        $posts=Post::paginate(10);
+        $posts=Post::with(['user','likes'])->paginate(10);
 
         return view('post',['posts'=>$posts]);
     }
