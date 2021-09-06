@@ -30,7 +30,7 @@
 
                     <div class="mb-4">
 
-                        <a href="" class="font-bold">{{$post->user->name}}</a> <span
+                        <a href="{{route('users.posts',$post->user)}}" class="font-bold">{{$post->user->name}}</a> <span
                             class="text-grey-300 text-sm">{{$post->created_at->diffForHumans()}}</span>
 
                         <p class="mb-2">{{$post->body}}</p>
