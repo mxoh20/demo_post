@@ -5,25 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PostLikesController extends Controller
 {
+    public function __construct(){
+
+        $this->middleware(['auth']);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-//    public function __construct()
-//    {
-//        $this->middleware(['auth']);
-//    }
-
     public function index()
     {
         //
-        $posts=Post::with(['user','likes'])->paginate(10);
-
-        return view('post',['posts'=>$posts]);
     }
 
     /**
@@ -34,8 +29,6 @@ class PostController extends Controller
     public function create()
     {
         //
-
-
     }
 
     /**
@@ -44,16 +37,17 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Post $post, Request $request)
     {
         //
-        $this->validate($request,([
-            'body'=>'required',
-    ]));
 
-       $request->user()->posts()->create($request->only('body'));
+        if($post->likedBy($request->user())){
+            return response(null,409);
+        }
 
-      return back();
+        $post->likes()->create(['user_id'=>$request->user()->id,]);
+
+        return back();
     }
 
     /**
@@ -96,8 +90,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post,Request $request)
     {
         //
+        $request->user()->likes()->where('post_id',$post->id)->delete();
+        return back();
+
     }
 }
