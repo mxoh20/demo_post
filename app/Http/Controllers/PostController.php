@@ -23,7 +23,7 @@ class PostController extends Controller
         //
         $posts = Post::latest()->with(['user', 'likes'])->paginate(10);
 
-        return view('post', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**

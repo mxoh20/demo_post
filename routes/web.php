@@ -24,9 +24,11 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 
 Route::get('users/{user:username}/posts',[UserPostController::class,'index'])->name('users.posts');
 
+
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
 Route::post('logout', [LogoutController::class, 'store'])->name('logout');
+
 
 Route::get('register', [RegisterController::class, 'index'])->name('registration');
 Route::post('register', [RegisterController::class, 'store'])->name('submit_registration');
@@ -34,6 +36,7 @@ Route::post('register', [RegisterController::class, 'store'])->name('submit_regi
 //likes router
 Route::post('/posts/{post}/likes', [PostLikesController::class, 'store'])->name('posts.likes');
 Route::delete('/posts/{post}/likes', [PostLikesController::class, 'destroy'])->name('posts.likes');
+
 
 Route::get('posts', [PostController::class, 'index'])->name('posts');
 Route::post('posts', [PostController::class, 'store'])->name('posts');
