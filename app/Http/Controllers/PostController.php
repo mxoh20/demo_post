@@ -13,10 +13,10 @@ class PostController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
 
-//    public function __construct()
-//    {
-//        $this->middleware(['auth']);
-//    }
+    public function __construct()
+    {
+        $this->middleware(['auth'])->except(['index']);
+    }
 
     public function index()
     {

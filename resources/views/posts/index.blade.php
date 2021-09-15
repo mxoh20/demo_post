@@ -12,8 +12,8 @@
             <div class="bg-white p-6 rounded-lg">
 
                 @auth()
-                    <form action="{{route('posts')}}" method="post" class="mb-8">
 
+                    <form action="{{route('posts')}}" method="post" class="mb-8">
                         @csrf
                         <div class="mb-4">
                             <label for="body" class="sr-only">body</label>
@@ -23,12 +23,14 @@
                         </div>
 
                         @error('body')
-                        <div class="text-red-500 mt-2 text-sm">{{$message}}</div> @enderror
+                        <div class="text-red-500 mt-2 text-sm">{{$message}}</div>
+                        @enderror
 
                         <div>
                             <button type="submit" class="bg-blue-500 px-4 py-3  rounded font-medium">post</button>
                         </div>
                     </form>
+
                 @endauth
 
 

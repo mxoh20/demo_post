@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\PostLiked;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -22,7 +24,7 @@ class DashboardController extends Controller
         //
 
 
-//        dd(auth()->user()->posts);
+
         return view('dashboard');
     }
 
@@ -34,6 +36,7 @@ class DashboardController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
