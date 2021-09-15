@@ -47,7 +47,8 @@
                     </div>
 
                 @else
-                    <p>{{$user->name}} does not have any post</p>
+{{--                    <p>{{$user->name}} does not have any post</p>--}}
+                    <p> No post yet </p>
                 @endif
             </div>
 
